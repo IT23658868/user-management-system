@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:8090'; // Adjust based on your backend URL
+const API_URL = 'http://127.0.0.1:8090'; // Adjust based on your backend URL
 
 export const addStaff = (staff) => axios.post(`${API_URL}/employee/add-employee`, staff);
 export const getAllStaff = () => axios.get(`${API_URL}/employee/get-employee`);
@@ -28,4 +28,5 @@ export const updateCustomerPhone = (customerId, phoneNumber) => axios.put(`${API
 export const updateCustomerAddress = (customerId, address) => axios.put(`${API_URL}/Customer/update-Customer-address/${customerId}`, address);
 export const updateCustomerFirstDealDate = (customerId, date) => axios.put(`${API_URL}/Customer/update-Customer-fristdealdate/${customerId}?fristDealDate=${date}`);
 export const updateCustomerLastDealDate = (customerId, date) => axios.put(`${API_URL}/Customer/update-Customer-lastdealdate/${customerId}?lastDealDate=${date}`);
+
 export const getAllCustomersCount = () => axios.get(`${API_URL}/Customer/get-Active-Customer-Count`);
