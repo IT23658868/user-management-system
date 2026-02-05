@@ -33,4 +33,4 @@ jobs:
 
       - name: Push Frontend Image
         run: |
-          docker push ishandhanusanka/user-Frontend:latest
+          docker push ishandhanusanka/user-frontend:latest
