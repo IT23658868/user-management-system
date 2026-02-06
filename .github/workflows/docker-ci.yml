@@ -35,6 +35,4 @@ jobs:
         run: |
           docker push ishandhanusanka/user-frontend:latest
 
-on:
-  push:
-    branches: [ main ]
+
