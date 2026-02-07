@@ -19,7 +19,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # -------- BACKEND --------
+      # ---------------- BACKEND ----------------
       - name: Build Backend Image
         run: |
           docker build \
@@ -32,7 +32,7 @@ jobs:
           docker push ishandhanusanka/user-backend:latest
           docker push ishandhanusanka/user-backend:${{ github.sha }}
 
-      # -------- FRONTEND --------
+      # ---------------- FRONTEND ----------------
       - name: Build Frontend Image
         run: |
           docker build \
