@@ -43,4 +43,4 @@ jobs:
       - name: Push Frontend Image
         run: |
           docker push ishandhanusanka/user-frontend:latest
-          docker push ishandusanka/user-frontend:${{ github.sha }}
+          docker push ishandhanusanka/user-frontend:${{ github.sha }}
