@@ -1,19 +1,27 @@
-FROM node:18-alpine
+# ---------- BUILD STAGE ----------
+FROM node:18-alpine AS build
 
-# Set working directory
 WORKDIR /app
 
-# Copy dependency files first (better caching)
 COPY package.json package-lock.json ./
-
-# Install dependencies
 RUN npm install
 
-# Copy rest of the project
 COPY . .
+RUN npm run build
 
-# Vite runs on 5173 internally
-EXPOSE 5173
 
-# Run Vite and allow external access
-CMD ["npm", "run", "dev", "--", "--host"]
+# ---------- RUN STAGE ----------
+FROM nginx:alpine
+
+# Remove default nginx config
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy our nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy built frontend files
+COPY --from=build /app/dist /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
